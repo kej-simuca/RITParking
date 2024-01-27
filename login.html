@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login RIT Services</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+<header>
+    <a href="./index.html"><img class="logo" src="assets/logo.png" alt="RIT Logo"></a>
+    <h1>Log In to RIT Parking Services</h1>
+</header>
+<!-- autocompelte is a html form attribute , as is the id attribute-->
+<div class="logIn">
+    <br>
+    <form autocomplete="on" id="loginForm">
+        <fieldset>
+            <legend>Personal Information</legend>
+            <label for="username">Username:</label><br>
+            <!-- type text is a html input form attribute -->
+            <input type="text" id="username" name="username"><br>
+            <label for="pass">Password:</label><br>
+            <input type="password" id="pass" name="pass">
+        </fieldset>
+        <br>
+        <label for="story">Tell us your story with RIT Parking Services:</label><br>
+        <textarea id="story" name="story" rows="5" cols="56" placeholder="Tell us how you feel"></textarea>
+        <br>
+        <Label for="sub">Do you want to recieve email updates about the RIT Parking Servies</Label>
+        <input type="checkbox" id="sub" name="sub" value="1">
+        <br><br>
+
+        <select name="gender">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+        </select>
+
+        <br>
+        <input style="margin: 0 auto" class="buttonParent" type="submit">
+    </form>
+</div>
+
+
+</body>
+
+</html>

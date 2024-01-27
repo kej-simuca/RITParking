@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="map-style.css" />
+    <title>Parking Spot Reservation</title>
+  </head>
+  <body>
+    <div class="movie-container">
+      <label>From:</label>
+      <select id="startHour">
+        <!-- Options for hours from 1 to 12 -->
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+      </select>
+
+      <select id="startMinute">
+        <option value="00">00</option>
+        <option value="30">30</option>
+      </select>
+
+      <select id="startPeriod">
+        <!-- Options for AM and PM -->
+        <option value="AM">AM</option>
+        <option value="PM">PM</option>
+      </select>
+
+      <label> To:</label>
+      <select id="endHour">
+        <!-- Options for hours from 1 to 12 -->
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+      </select>
+
+      <select id="endMinute">
+        <option value="00">00</option>
+        <option value="30">30</option>
+      </select>
+
+      <select id="endPeriod">
+        <!-- Options for AM and PM -->
+        <option value="AM">AM</option>
+        <option value="PM">PM</option>
+      </select>
+    </div>
+
+    <ul class="showcase">
+      <li>
+        <div class="seat"></div>
+        <small>N/A</small>
+      </li>
+      <li>
+        <div class="seat selected"></div>
+        <small>Selected</small>
+      </li>
+      <li>
+        <div class="seat occupied"></div>
+        <small>Occupied</small>
+      </li>
+    </ul>
+
+    
+    <canvas id="buildingCanvas"></canvas>
+
+    <svg width="200" height="100">
+      <!-- SVG Building -->
+      <rect x="0" y="0" width="200" height="100" fill="beige" />
+  
+      <!-- SVG Windows -->
+      <rect x="25" y="25" width="15" height="15" fill="#333" />
+      <rect x="60" y="25" width="15" height="15" fill="#333" />
+      <rect x="95" y="25" width="15" height="15" fill="#333" />
+      <!-- Add more windows as needed -->
+  
+      <rect x="25" y="60" width="15" height="15" fill="#333" />
+      <rect x="60" y="60" width="15" height="15" fill="#333" />
+      <rect x="95" y="60" width="15" height="15" fill="#333" />
+      <!-- Add more windows as needed -->
+    </svg>
+  
+    <script>
+      const canvas = document.getElementById('buildingCanvas');
+      const ctx = canvas.getContext('2d');
+  
+      // Set canvas size
+      canvas.width = 200;
+      canvas.height = 200;
+  
+      function drawBuilding() {
+        // Building
+        ctx.fillStyle = 'beige';
+        ctx.fillRect(0, 0, 200, 200);
+  
+        // Windows
+        ctx.fillStyle = '#333';
+        for (let i = 0; i < 5; i++) {
+          for (let j = 0; j < 4; j++) {
+            const x = 25 + i * 35;
+            const y = 30 + j * 35;
+            ctx.fillRect(x, y, 15, 15);
+          }
+        }
+  
+        // Text
+        ctx.font = '12px Arial';
+        ctx.textAlign = 'center';
+        ctx.fillStyle = 'orange';
+        ctx.fillText('RIT', 70, 17);
+        ctx.fillStyle = 'black';
+        ctx.fillText('KOSOVO', 110, 17);
+      }
+  
+      drawBuilding();
+    </script>
+
+      <div class="row" style="margin-top: 20px;">
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+      </div>
+
+      <div class="row">
+        <div class="seat" style="visibility: hidden;"></div>
+        <div class="seat occupied" style="visibility: hidden;"></div>
+        <div class="seat occupied"style="visibility: hidden;"></div>
+        <div class="seat"style="visibility: hidden;"></div>
+        <div class="seat"style="visibility: hidden;"></div>
+        <div class="seat"style="visibility: hidden;"></div>
+        <div class="seat"style="visibility: hidden;"></div>
+        <div class="seat"></div>
+      </div>
+
+      <div class="row">
+        <div class="seat" style="visibility: hidden;"></div>
+        <div class="seat occupied" style="visibility: hidden;"></div>
+        <div class="seat occupied"style="visibility: hidden;"></div>
+        <div class="seat"style="visibility: hidden;"></div>
+        <div class="seat"style="visibility: hidden;"></div>
+        <div class="seat"style="visibility: hidden;"></div>
+        <div class="seat"style="visibility: hidden;"></div>
+        <div class="seat"></div>
+      </div>
+
+      <div class="row">
+        <div class="seat" style="visibility: hidden;"></div>
+        <div class="seat occupied" style="visibility: hidden;"></div>
+        <div class="seat occupied"style="visibility: hidden;"></div>
+        <div class="seat"style="visibility: hidden;"></div>
+        <div class="seat"style="visibility: hidden;"></div>
+        <div class="seat"style="visibility: hidden;"></div>
+        <div class="seat"style="visibility: hidden;"></div>
+        <div class="seat"></div>
+      </div>
+
+      <div class="row">
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat occupied"></div>
+        <div class="seat occupied"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+      </div>
+
+      <div class="row"style="visibility: hidden;">
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat occupied"></div>
+        <div class="seat occupied"></div>
+        <div class="seat occupied"></div>
+        <div class="seat"></div>
+      </div>
+    </div>
+
+      <!-- Add more rows of parking spots as needed -->
+
+    </div>
+
+    <p class="text">
+      You have selected <span id="count">0</span> parking spot from <span id="startTime">00:00 AM</span> to <span id="endTime">00:00 AM</span>
+    </p>
+
+    <script src="map-script.js" type="text/javascript"></script>
+  </body>
+</html>
